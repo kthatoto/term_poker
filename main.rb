@@ -5,11 +5,10 @@ require_relative './hand'
 
 deck = Deck.new
 deck.shuffle
-cards = deck.draw(5)
+hand = Hand.new(deck.draw(5))
 
 cursor = 0
 active_cards = Array.new(5).fill(false)
-keys = []
 
 field = TermCanvas::Canvas.new(x: 0, y: 0, w: TermCanvas.width, h: TermCanvas.height)
 loop do
@@ -24,12 +23,12 @@ loop do
   when ' '
     active_cards[cursor] = !active_cards[cursor]
   when 10
-    active_cards.each_with_index do |flag, i|
-      cards[i] = deck.draw if flag
+    new_cards = active_cards.map.with_index do |flag, i|
+      deck.draw if flag
     end
+    hand.change_cards(new_cards)
     active_cards.fill(false)
   end
-  keys << key if key
 
   field.clear
   cards.each_with_index do |card, i|
@@ -54,8 +53,13 @@ loop do
       background_color: {r: 0, g: 0, b: 0}, foreground_color: {r: 0, g: 0, b: 0},
     )
   )
+  field.text(
+    TermCanvas::Text.new(
+      x: 18, y: 2, body: "Deck: #{deck.size}",
+      background_color: {r: 0, g: 0, b: 0}, foreground_color: {r: 1000, g: 1000, b: 1000},
+    )
+  )
   field.update
   sleep 0.05
 end
 TermCanvas.close
-# pp keys

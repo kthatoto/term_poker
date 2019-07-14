@@ -17,4 +17,8 @@ class Deck
     return @cards.pop if n.nil?
     @cards.pop(n)
   end
+
+  def size
+    @cards.size
+  end
 end
