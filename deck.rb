@@ -1,7 +1,8 @@
-class Stock
+class Deck
+  SUITS = [:spade, :heart, :diamond, :club]
   attr_reader :cards
   def initialize
-    @cards = %w(♠ ♥ ♣ ♦).map { |suit|
+    @cards = SUITS.map { |suit|
       (1..13).to_a.map { |number|
         Card.new(suit: suit, number: number)
       }
@@ -14,7 +15,6 @@ class Stock
 
   def draw(n = nil)
     return @cards.pop if n.nil?
-    raise if !n.is_a? Integer
     @cards.pop(n)
   end
 end
