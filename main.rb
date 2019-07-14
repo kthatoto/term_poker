@@ -31,7 +31,7 @@ loop do
   end
 
   field.clear
-  cards.each_with_index do |card, i|
+  hand.cards.each_with_index do |card, i|
     color = card.black? ? {r: 0, g: 0, b: 0} : {r: 1000, g: 0, b: 0}
     y = active_cards[i] ? 1 : 2
     field.text(

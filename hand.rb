@@ -6,8 +6,8 @@ class Hand
 
   def change_cards(new_cards)
     cards = []
-    cards.size.times do |i|
-      new_cards << new_cards[i] || @cards[i]
+    @cards.size.times do |i|
+      cards << new_cards[i] || @cards[i]
     end
     @cards = cards
   end
