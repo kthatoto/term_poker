@@ -9,12 +9,18 @@ class Card
   def suit
     {spade: ?♠, heart: ?♥, diamond: ?♦, club: ?♣}[@suit]
   end
+  def raw_suit
+    @suit
+  end
 
   def number
     if figure = {'1': ?A, '11': ?J, '12': ?Q, '13': ?K}[@number.to_s.to_sym]
       return figure
     end
     @number.to_s
+  end
+  def raw_number
+    @number
   end
 
   def black?

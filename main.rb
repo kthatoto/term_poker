@@ -53,9 +53,16 @@ loop do
       background_color: {r: 0, g: 0, b: 0}, foreground_color: {r: 0, g: 0, b: 0},
     )
   )
+
   field.text(
     TermCanvas::Text.new(
       x: 18, y: 2, body: "Deck: #{deck.size}",
+      background_color: {r: 0, g: 0, b: 0}, foreground_color: {r: 1000, g: 1000, b: 1000},
+    )
+  )
+  field.text(
+    TermCanvas::Text.new(
+      x: 18, y: 4, body: "Rank: #{hand.rank}",
       background_color: {r: 0, g: 0, b: 0}, foreground_color: {r: 1000, g: 1000, b: 1000},
     )
   )
