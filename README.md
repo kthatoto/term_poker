@@ -1,7 +1,7 @@
 # term_poker
 Draw Poker on Terminal
 
-<img src="https://github.com/kthatoto/term_poker/raw/master/images/term_poker.gif" alt="Demo" width="500">
+<img src="https://github.com/kthatoto/term_poker/raw/master/images/demo.gif" alt="Demo" width="500">
 
 ## Requirement
 * `Ruby`
