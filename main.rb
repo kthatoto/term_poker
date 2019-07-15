@@ -170,9 +170,15 @@ loop do
         )
       )
       if showing_expectations
+        field.text(
+          TermCanvas::Text.new(
+            x: 31, y: 7, body: ": #{format("%.3f", expectations.total_calculate)}",
+            background_color: {r: 0, g: 0, b: 0}, foreground_color: {r: 1000, g: 1000, b: 1000},
+          )
+        )
         expectations.expectations.each_with_index do |_expectation, i|
           expectation = _expectation[1]
-          body = "#{expectation[:name].rjust(15)}: #{format("%.3f", expectation[:probability]).rjust(7)}% *#{expectation[:payout]}"
+          body = "#{expectation[:name].rjust(15)}: #{format("%.4f", 100 * expectation[:probability]).rjust(8)}% *#{expectation[:payout]}"
           field.text(
             TermCanvas::Text.new(
               x: 18, y: 8 + i, body: body,

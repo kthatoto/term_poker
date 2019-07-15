@@ -12,6 +12,12 @@ class Expectations
     calculate
   end
 
+  def total_calculate
+    @expectations.map { |_, value|
+      value[:payout] * value[:probability]
+    }.inject(:+)
+  end
+
   private
 
     def calculate
@@ -85,7 +91,7 @@ class Expectations
 
       combination_count = @rank_count.map { |_, count| count }.inject(:+)
       @rank_count.each do |key, count|
-        @expectations[key][:probability] = 100 * count / combination_count.to_f
+        @expectations[key][:probability] = count / combination_count.to_f
       end
     end
 end
