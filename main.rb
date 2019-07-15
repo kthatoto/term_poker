@@ -7,11 +7,12 @@ require_relative './expectations'
 scene = :betting
 betting_dollars = 0
 dollars = 100
-active_cards = Array.new(5).fill(false)
+active_cards_flag = Array.new(5).fill(false)
 cursor = 0
 deck = Deck.new
 hand = nil
 showing_expectations = false
+expectations = nil
 
 field = TermCanvas::Canvas.new(x: 0, y: 0, w: TermCanvas.width, h: TermCanvas.height)
 loop do
@@ -62,6 +63,7 @@ loop do
         deck = Deck.new
         deck.shuffle
         hand = Hand.new(deck.draw(5))
+        expectations = Expectations.new(cards: hand.cards, deck: deck)
       end
     end
   elsif scene == :playing
@@ -73,13 +75,17 @@ loop do
     when ?e
       showing_expectations = !showing_expectations
     when ' '
-      active_cards[cursor] = !active_cards[cursor]
+      active_cards_flag[cursor] = !active_cards_flag[cursor]
+      active_cards = active_cards_flag.map.with_index { |flag, i|
+        hand.cards[i] if !flag
+      }.compact
+      expectations = Expectations.new(cards: active_cards, deck: deck)
     when 10
-      new_cards = active_cards.map.with_index do |flag, i|
+      new_cards = active_cards_flag.map.with_index do |flag, i|
         deck.draw if flag
       end
       hand.change_cards(new_cards)
-      active_cards.fill(false)
+      active_cards_flag.fill(false)
       scene = :result
     when ?e
     end
@@ -124,7 +130,7 @@ loop do
   elsif scene == :playing || scene == :result
     hand.cards.each_with_index do |card, i|
       color = card.black? ? {r: 0, g: 0, b: 0} : {r: 1000, g: 0, b: 0}
-      y = active_cards[i] ? 4 : 5
+      y = active_cards_flag[i] ? 4 : 5
       field.text(
         TermCanvas::Text.new(
           x: 2 + i * 3, y: y, body: card.suit.rjust(2),
@@ -160,10 +166,21 @@ loop do
       field.text(
         TermCanvas::Text.new(
           x: 18, y: 7, body: "(e)xpectation",
-        background_color: {r: 0, g: 0, b: 0}, foreground_color: {r: 1000, g: 1000, b: 1000},
+          background_color: {r: 0, g: 0, b: 0}, foreground_color: {r: 1000, g: 1000, b: 1000},
         )
       )
       if showing_expectations
+        expectations.expectations.each_with_index do |_expectation, i|
+          expectation = _expectation[1]
+          body = "#{expectation[:name].rjust(15)}: #{format("%.3f", expectation[:probability]).rjust(7)}% *#{expectation[:payout]}"
+          field.text(
+            TermCanvas::Text.new(
+              x: 18, y: 8 + i, body: body,
+              background_color: {r: 0, g: 0, b: 0},
+              foreground_color: {r: 1000, g: 1000, b: 1000},
+            )
+          )
+        end
       end
     elsif scene == :result
       if hand.rank.payout > 0
@@ -182,6 +199,6 @@ loop do
     end
   end
   field.update
-  sleep 0.05
+  sleep 0.1
 end
 TermCanvas.close

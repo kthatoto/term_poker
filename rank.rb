@@ -1,4 +1,5 @@
 class Rank
+  attr_reader :rank
 
   RANKS = {
     royal_flush:    {name: 'Royal Flush',     payout: 500},
@@ -23,6 +24,10 @@ class Rank
 
   def payout
     RANKS[@rank][:payout]
+  end
+
+  def self.keys
+    RANKS.map { |key, _| key }
   end
 
   private
