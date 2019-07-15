@@ -106,7 +106,7 @@ loop do
 
   if scene == :betting
     5.times do |i|
-      patterns = ['┏┓', '┗┛']
+      patterns = ['╔╗', '╚╝']
       2.times do |j|
         field.text(
           TermCanvas::Text.new(
