@@ -1,7 +1,7 @@
 # term_poker
 Draw Poker on Terminal
 
-<img src="/kthatoto/term_poker/raw/master/images/term_poker.gif" alt="Demo" width="500">
+![Demo](./images/term_poker.gif)
 
 ## Requirement
 * `Ruby`
@@ -20,7 +20,7 @@ Draw Poker on Terminal
 |`q`|Quit game|
 
 ### Betting
-<img src="/kthatoto/term_poker/raw/master/images/betting.png" alt="Betting" width="500">
+![Betting](./images/betting.png)
 
 |key|action|
 |---|---|
@@ -37,7 +37,7 @@ Draw Poker on Terminal
 The cards which has been raised are going to change.  
 The change is only once.
 
-<img src="/kthatoto/term_poker/raw/master/images/playing.png" alt="Playing" width="500">
+![Playing](./images/playing.png)
 
 |key|action|
 |---|---|
@@ -48,7 +48,7 @@ The change is only once.
 
 ### Result
 
-<img src="/kthatoto/term_poker/raw/master/images/result.png" alt="Result" width="500">
+![Result](./images/result.png)
 
 |key|action|
 |---|---|
