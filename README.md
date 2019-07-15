@@ -1,6 +1,6 @@
 # term_poker
 Draw Poker on Terminal  
-* Demo
+### Demo
 <img src="https://github.com/kthatoto/term_poker/raw/master/images/demo.gif" alt="Demo" width="500">
 
 ## Requirement
