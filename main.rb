@@ -26,11 +26,29 @@ loop do
         betting_dollars += 1
         dollars -= 1
       end
+    when ?K
+      if dollars >= 5
+        betting_dollars += 5
+        dollars -= 5
+      elsif dollars > 0
+        betting_dollars += dollars
+        dollars = 0
+      end
     when ?j
       if betting_dollars > 0
         betting_dollars -= 1
         dollars += 1
       end
+    when ?J
+      if betting_dollars >= 5
+        betting_dollars -= 5
+        dollars += 5
+      elsif dollars > 0
+        dollars += betting_dollars
+        betting_dollars = 0
+      end
+    when ?h
+      betting_dollars = dollars = (betting_dollars + dollars) / 2
     when ?m
       betting_dollars += dollars
       dollars = 0
