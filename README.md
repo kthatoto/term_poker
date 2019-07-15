@@ -1,7 +1,7 @@
 # term_poker
 Draw Poker on Terminal
 
-![Demo](./images/term_poker.gif)
+![Demo](./images/term_poker.gif | width=500)
 
 ## Requirement
 * `Ruby`
@@ -20,7 +20,7 @@ Draw Poker on Terminal
 |`q`|Quit game|
 
 ### Betting
-![Betting](./images/betting.png)
+![Betting](./images/betting.png | width=500)
 
 |key|action|
 |---|---|
@@ -37,7 +37,7 @@ Draw Poker on Terminal
 The cards which has been raised are going to change.  
 The change is only once.
 
-![Playing](./images/playing.png)
+![Playing](./images/playing.png | width=500)
 
 |key|action|
 |---|---|
@@ -48,7 +48,7 @@ The change is only once.
 
 ### Result
 
-![Result](./images/result.png)
+![Result](./images/result.png | width=500)
 
 |key|action|
 |---|---|
