@@ -2,7 +2,7 @@ require 'term_canvas'
 require_relative './deck'
 require_relative './card'
 require_relative './hand'
-
+require_relative './expectations'
 
 scene = :betting
 betting_dollars = 0
@@ -11,6 +11,7 @@ active_cards = Array.new(5).fill(false)
 cursor = 0
 deck = Deck.new
 hand = nil
+showing_expectations = false
 
 field = TermCanvas::Canvas.new(x: 0, y: 0, w: TermCanvas.width, h: TermCanvas.height)
 loop do
@@ -69,6 +70,8 @@ loop do
       cursor -= 1 if cursor > 0
     when ?l
       cursor += 1 if cursor < 4
+    when ?e
+      showing_expectations = !showing_expectations
     when ' '
       active_cards[cursor] = !active_cards[cursor]
     when 10
@@ -78,6 +81,7 @@ loop do
       hand.change_cards(new_cards)
       active_cards.fill(false)
       scene = :result
+    when ?e
     end
   elsif scene == :result
     case key
@@ -153,6 +157,14 @@ loop do
           background_color: {r: 0, g: 0, b: 0}, foreground_color: {r: 0, g: 0, b: 0},
         )
       )
+      field.text(
+        TermCanvas::Text.new(
+          x: 18, y: 7, body: "(e)xpectation",
+        background_color: {r: 0, g: 0, b: 0}, foreground_color: {r: 1000, g: 1000, b: 1000},
+        )
+      )
+      if showing_expectations
+      end
     elsif scene == :result
       if hand.rank.payout > 0
         body = "You won $#{hand.rank.payout * betting_dollars}!"

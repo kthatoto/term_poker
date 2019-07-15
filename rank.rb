@@ -2,11 +2,11 @@ class Rank
 
   RANKS = {
     royal_flush:    {name: 'Royal Flush',     payout: 500},
-    straight_flush: {name: 'Straight Flush',   payout: 100},
+    straight_flush: {name: 'Straight Flush',  payout: 100},
     four_card:      {name: 'Four of a Kind',  payout: 50},
     full_house:     {name: 'Full House',      payout: 20},
-    flush:          {name: 'Flush',           payout: 10 },
-    straight:       {name: 'Straight',         payout: 8},
+    flush:          {name: 'Flush',           payout: 10},
+    straight:       {name: 'Straight',        payout: 8},
     three_card:     {name: 'Three of a Kind', payout: 4},
     two_pair:       {name: 'Two Pair',        payout: 3},
     one_pair:       {name: 'One Pair',        payout: 1},
