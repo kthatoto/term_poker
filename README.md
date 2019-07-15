@@ -21,6 +21,7 @@ Draw Poker on Terminal
 
 ### Betting
 ![Betting](./images/betting.png)
+
 |key|action|
 |---|---|
 |`k`|Up bet $1|
@@ -33,9 +34,11 @@ Draw Poker on Terminal
 |`Enter`|Decide bet and Start to play|
 
 ### Playing
-The cards which has been raised are going to change.
+The cards which has been raised are going to change.  
 The change is only once.
+
 ![Playing](./images/playing.png)
+
 |key|action|
 |---|---|
 |`h`|Move cursor to left|
@@ -44,7 +47,9 @@ The change is only once.
 |`Enter`|Change the cards|
 
 ### Result
+
 ![Result](./images/result.png)
+
 |key|action|
 |---|---|
 |`Enter`|Get payout and return to betting|
